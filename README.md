@@ -1,4 +1,4 @@
-xu# GX Resilience Prototype
+## GX Resilience Prototype
 
 Chosen case study: Case Study 2, The Youth Resilience Challenge.
 
