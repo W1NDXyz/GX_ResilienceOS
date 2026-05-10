@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GX Resilience Prototype</title>
+    <meta
+      name="description"
+      content="A Case Study 2 prototype for youth financial resilience using AI nudges, automated savings, and habit loops."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="M3 11.2 12 4l9 7.2v8.3a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H4.5A1.5 1.5 0 0 1 3 19.5z" />
+      </symbol>
+      <symbol id="icon-coach" viewBox="0 0 24 24">
+        <path d="M7 8.5A4.5 4.5 0 0 1 11.5 4h1A4.5 4.5 0 0 1 17 8.5v.2a4 4 0 0 1 3 3.9v1.8a4 4 0 0 1-4 4h-1.2L12 21l-2.8-2.6H8a4 4 0 0 1-4-4v-1.8a4 4 0 0 1 3-3.9z" />
+        <path d="M9 12h.1M15 12h.1M10 15c1.2.8 2.8.8 4 0" />
+      </symbol>
+      <symbol id="icon-auto" viewBox="0 0 24 24">
+        <path d="M5 12a7 7 0 0 1 11.8-5.1L19 9" />
+        <path d="M19 5v4h-4" />
+        <path d="M19 12a7 7 0 0 1-11.8 5.1L5 15" />
+        <path d="M5 19v-4h4" />
+      </symbol>
+      <symbol id="icon-trophy" viewBox="0 0 24 24">
+        <path d="M8 4h8v5.5a4 4 0 0 1-8 0z" />
+        <path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 14v4M9 20h6" />
+      </symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24">
+        <path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM3.5 20a5.5 5.5 0 0 1 11 0" />
+        <path d="M16 11a3 3 0 1 0 0-6M15.5 15.5A4.8 4.8 0 0 1 20.5 20" />
+      </symbol>
+      <symbol id="icon-wallet" viewBox="0 0 24 24">
+        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H19v4H6.5A2.5 2.5 0 0 1 4 6.5v11A2.5 2.5 0 0 0 6.5 20H20v-9H6.5A2.5 2.5 0 0 1 4 8.5z" />
+        <path d="M17 15h.1" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 20 6v5.4c0 5-3.2 8.2-8 9.6-4.8-1.4-8-4.6-8-9.6V6z" />
+        <path d="m9 12 2 2 4-5" />
+      </symbol>
+      <symbol id="icon-piggy" viewBox="0 0 24 24">
+        <path d="M5 12.5A5.5 5.5 0 0 1 10.5 7H15a4 4 0 0 1 4 4v3.5l2 1.5-2 1.5V20h-3v-2H9v2H6v-3.2a5.5 5.5 0 0 1-1-4.3z" />
+        <path d="M10 7c.2-1.5 1-2.5 2.5-3M16 11h.1M5 12H3" />
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M18 10a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7z" />
+        <path d="M10 20a2.2 2.2 0 0 0 4 0" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="icon-scan" viewBox="0 0 24 24">
+        <path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" />
+        <path d="M7 12h10M9 9h6M10 15h4" />
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" />
+      </symbol>
+    </svg>
+
+    <div class="prototype" data-app>
+      <aside class="rail" aria-label="GX Resilience navigation">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">GX</div>
+          <div>
+            <p class="eyebrow">Youth Resilience</p>
+            <h1>GX Resilience</h1>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-row">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div>
+              <p class="profile-name">Aina Rahman</p>
+              <p class="muted">UTM final-year student</p>
+            </div>
+          </div>
+          <div class="score-meter" aria-label="Current resilience score">
+            <div class="score-ring" data-score-ring>
+              <span data-score>64</span>
+            </div>
+            <div>
+              <p class="metric-label">Resilience score</p>
+              <p class="score-status" data-score-status>Recovering</p>
+            </div>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" type="button" aria-label="Home" data-view-target="dashboard" data-testid="nav-dashboard">
+            <svg><use href="#icon-home"></use></svg>
+            <span>Home</span>
+          </button>
+          <button class="nav-item" type="button" aria-label="AI Coach" data-view-target="coach" data-testid="nav-coach">
+            <svg><use href="#icon-coach"></use></svg>
+            <span>AI Coach</span>
+          </button>
+          <button class="nav-item" type="button" aria-label="Auto Save" data-view-target="autosave" data-testid="nav-autosave">
+            <svg><use href="#icon-auto"></use></svg>
+            <span>Auto Save</span>
+          </button>
+          <button class="nav-item" type="button" aria-label="Rewards" data-view-target="challenges" data-testid="nav-challenges">
+            <svg><use href="#icon-trophy"></use></svg>
+            <span>Rewards</span>
+          </button>
+          <button class="nav-item" type="button" aria-label="Friends" data-view-target="community" data-testid="nav-community">
+            <svg><use href="#icon-users"></use></svg>
+            <span>Friends</span>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Case Study 2 Prototype</p>
+            <h2 data-view-title>Financial resilience dashboard</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="command-button" type="button" title="Check spending" data-action="run-scan">
+              <svg><use href="#icon-scan"></use></svg>
+              Check spending
+            </button>
+            <button class="icon-button" type="button" title="Notifications" data-action="show-alerts">
+              <svg><use href="#icon-bell"></use></svg>
+              <span class="notification-dot" data-alert-count>3</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="notice-banner" data-nudge-banner>
+          <div class="notice-icon"><svg><use href="#icon-shield"></use></svg></div>
+          <div>
+            <p class="notice-title">Debt Shield detected a pressure week</p>
+            <p data-primary-nudge>Food delivery and BNPL spending are trending 18% above your student-safe range.</p>
+          </div>
+          <button class="text-button" type="button" data-action="apply-primary-nudge">Save RM36</button>
+        </section>
+
+        <section class="view active" id="dashboard" data-view="dashboard">
+          <div class="control-strip">
+            <div class="segmented-control" role="group" aria-label="Profile type">
+              <button class="active" type="button" data-profile="student">Student</button>
+              <button type="button" data-profile="graduate">Fresh grad</button>
+            </div>
+            <label class="range-control">
+              <span>Monthly money in</span>
+              <strong data-income-label>RM 1,200</strong>
+              <input type="range" min="800" max="4200" step="100" value="1200" data-control="income" />
+            </label>
+            <label class="range-control">
+              <span>GX wallet balance</span>
+              <strong data-balance-label>RM 540</strong>
+              <input type="range" min="120" max="2800" step="20" value="540" data-control="balance" />
+            </label>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <div class="card-icon tone-green"><svg><use href="#icon-wallet"></use></svg></div>
+              <p class="metric-label">Safe to spend today</p>
+              <strong data-safe-spend>RM 24</strong>
+              <span data-safe-note>After rent, savings, and bills</span>
+            </article>
+            <article class="metric-card">
+              <div class="card-icon tone-blue"><svg><use href="#icon-piggy"></use></svg></div>
+              <p class="metric-label">Emergency fund</p>
+              <strong data-buffer>18%</strong>
+              <span data-buffer-note>RM 720 of RM 4,000 target</span>
+            </article>
+            <article class="metric-card">
+              <div class="card-icon tone-coral"><svg><use href="#icon-shield"></use></svg></div>
+              <p class="metric-label">Debt risk</p>
+              <strong data-risk>Medium</strong>
+              <span data-risk-note>BNPL exposure RM 180</span>
+            </article>
+            <article class="metric-card">
+              <div class="card-icon tone-gold"><svg><use href="#icon-trophy"></use></svg></div>
+              <p class="metric-label">Savings streak</p>
+              <strong data-streak>12 days</strong>
+              <span>Next reward at 14 days</span>
+            </article>
+          </div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Spending pattern</p>
+                  <h3>Weekly category scan</h3>
+                </div>
+                <button class="icon-button small" type="button" title="Refresh scan" data-action="run-scan">
+                  <svg><use href="#icon-scan"></use></svg>
+                </button>
+              </div>
+              <div class="spend-bars" data-spend-bars></div>
+            </section>
+
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Next best action</p>
+                  <h3>AI nudge queue</h3>
+                </div>
+              </div>
+              <div class="nudge-list" data-nudge-list></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="coach" data-view="coach">
+          <div class="coach-layout">
+            <section class="panel coach-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">AI Coach</p>
+                  <h3>Context-aware guidance</h3>
+                </div>
+                <span class="live-pill">Live pattern</span>
+              </div>
+              <div class="coach-message" data-coach-message>
+                <p class="coach-kicker">Aina, your cash flow can recover this week.</p>
+                <p>Move RM 36 from two food delivery swaps into Goal Pocket tonight. It protects your streak and keeps your weekend safe-to-spend above RM 20.</p>
+              </div>
+              <div class="prompt-chips" aria-label="Coach prompts">
+                <button type="button" data-coach-topic="food">Food</button>
+                <button type="button" data-coach-topic="transport">Transport</button>
+                <button type="button" data-coach-topic="shopping">Shopping</button>
+                <button type="button" data-coach-topic="income">Payday</button>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Recent banking moments</p>
+                  <h3>Nudge-ready transactions</h3>
+                </div>
+              </div>
+              <div class="transaction-list" data-transactions></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="autosave" data-view="autosave">
+          <div class="two-column autosave-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Savings autopilot</p>
+                  <h3>GX Pocket rules</h3>
+                </div>
+              </div>
+
+              <label class="switch-row">
+                <span>
+                  <strong>Round-up savings</strong>
+                  <small>Round every card spend to the next RM and save the difference.</small>
+                </span>
+                <input type="checkbox" checked data-toggle="roundup" />
+              </label>
+              <label class="switch-row">
+                <span>
+                  <strong>Impulse cooling-off</strong>
+                  <small>Delay high-risk discretionary spending above RM 80 for 12 hours.</small>
+                </span>
+                <input type="checkbox" checked data-toggle="cooling" />
+              </label>
+              <label class="range-control wide">
+                <span>Payday split to Emergency Pocket</span>
+                <strong data-split-label>8%</strong>
+                <input type="range" min="0" max="25" step="1" value="8" data-control="split" />
+              </label>
+              <button class="primary-button" type="button" data-action="simulate-payday">
+                <svg><use href="#icon-plus"></use></svg>
+                Simulate salary day
+              </button>
+            </section>
+
+            <section class="panel projection-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">90-day projection</p>
+                  <h3>Buffer growth</h3>
+                </div>
+              </div>
+              <div class="projection-visual">
+                <div class="projection-bar">
+                  <span data-projection-bar></span>
+                </div>
+                <strong data-projection-total>RM 1,210</strong>
+                <p data-projection-note>Round-ups plus payday split can add RM 490 in 90 days.</p>
+              </div>
+              <div class="automation-summary" data-automation-summary></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="challenges" data-view="challenges">
+          <div class="challenge-grid" data-challenges></div>
+        </section>
+
+        <section class="view" id="community" data-view="community">
+          <div class="two-column">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Social accountability</p>
+                  <h3>Friends saving circle</h3>
+                </div>
+                <span class="live-pill">Private by default</span>
+              </div>
+              <div class="circle-card">
+                <div class="circle-avatars" aria-hidden="true">
+                  <span>A</span><span>D</span><span>M</span><span>S</span>
+                </div>
+                <p class="circle-title">UTM Money Reset Squad</p>
+                <p class="muted">4 members saving toward exam month stability.</p>
+                <div class="circle-progress">
+                  <span style="width: 62%"></span>
+                </div>
+                <div class="circle-stats">
+                  <span>RM 1,860 saved</span>
+                  <span>62% to goal</span>
+                </div>
+              </div>
+              <button class="secondary-button" type="button" data-action="boost-circle">
+                <svg><use href="#icon-check"></use></svg>
+                Save RM10 with friends
+              </button>
+            </section>
+
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Anonymous peer benchmark</p>
+                  <h3>Campus habits</h3>
+                </div>
+              </div>
+              <div class="benchmark-list">
+                <div>
+                  <span>Saved this week</span>
+                  <strong data-peer-saved>Top 38%</strong>
+                </div>
+                <div>
+                  <span>Food delivery control</span>
+                  <strong>Top 51%</strong>
+                </div>
+                <div>
+                  <span>Emergency buffer</span>
+                  <strong data-peer-buffer>Needs work</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <aside class="insight-rail">
+        <section class="gx-card" aria-label="GXBank card preview">
+          <div class="gx-card-top">
+            <span>GXBank</span>
+            <span>Resilience Mode</span>
+          </div>
+          <div class="card-chip" aria-hidden="true"></div>
+          <p>**** 0426</p>
+          <div class="gx-card-bottom">
+            <span>Aina Rahman</span>
+            <span>Debt Shield on</span>
+          </div>
+        </section>
+
+        <section class="panel compact-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Demo impact</p>
+              <h3>Month-end forecast</h3>
+            </div>
+          </div>
+          <canvas width="280" height="180" data-forecast-chart aria-label="Month-end forecast chart"></canvas>
+          <p class="forecast-copy" data-forecast-copy>With autopilot active, Aina is projected to avoid RM 92 in short-term debt this month.</p>
+        </section>
+
+        <section class="panel compact-panel">
+          <p class="eyebrow">GXBank fit</p>
+          <ul class="fit-list">
+            <li>Goal Pockets become automatic habit accounts.</li>
+            <li>Debit card moments become timely behaviour nudges.</li>
+            <li>AI guidance stays contextual, not generic.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <div class="toast-region" data-toast-region aria-live="polite" aria-atomic="true"></div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
