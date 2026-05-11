@@ -41,3 +41,30 @@ The prototype is intentionally front-end only so it is easy to submit and demo d
 - `styles.css`: responsive UI and visual system.
 - `app.js`: simulated data, scoring logic, AI-style nudges, and interactions.
 - `SUBMISSION_NOTES.md`: pitch notes and implementation talking points.
+
+
+#
+#
+#
+
+# Future Vision: Financial HabitOS
+
+GX Resilience is designed as the first prototype layer of a larger behavioural-finance ecosystem called Financial HabitOS.
+
+The long-term vision is to transform digital banking from a passive transaction viewer into an intelligent behavioural support system that helps users build financial resilience automatically over time.
+
+Instead of only showing spending history after money is gone, Financial HabitOS aims to help users make healthier financial decisions before financial stress and debt occur.
+
+## Planned Future Directions
+- Predictive financial stress detection using behavioural patterns
+- Adaptive AI coaching based on user habits and spending behaviour
+- Automated resilience systems such as emergency-pocket transfers and impulse-spending cooldowns
+- Behaviour-based financial scoring focused on consistency and resilience rather than only account balance
+- Social accountability systems with private group savings and habit challenges
+- Real-time AI intervention during risky spending moments
+  
+## Long-Term Goal
+
+Our goal is to make healthy financial behaviour feel natural, timely, and automatic for students and young adults — reducing dependence on willpower alone.
+
+GX Resilience represents the first prototype step toward that vision.
