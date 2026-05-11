@@ -47,3 +47,65 @@ Closing line:
 - Auto Save moves money into savings without relying on discipline.
 - Rewards and streaks make good habits easier to continue.
 - Friends can save together, but the app keeps exact balances private.
+
+
+# Future Vision: Financial HabitOS
+
+GX Resilience is currently designed as a prototype feature inside GXBank focused on helping Malaysian students and fresh graduates build healthier financial habits.
+
+Beyond this prototype, our team plans to evolve the concept into a larger behavioural-finance platform called Financial HabitOS.
+
+## What is Financial HabitOS?
+
+Financial HabitOS is an AI-powered behavioural operating system designed to help users:
+- avoid unhealthy spending habits before debt happens
+- build long-term saving consistency
+- automate positive financial behaviours
+- receive real-time behavioural nudges
+- improve financial resilience gradually through daily actions
+
+Instead of functioning like a traditional banking dashboard that only shows balances and transactions after spending occurs, Financial HabitOS focuses on proactive intervention and habit formation.
+
+## Planned Future Features
+
+### Predictive Financial Stress Detection
+AI models could identify risky spending patterns, low cash-buffer periods, or potential debt-risk windows before financial problems become serious.
+
+### Adaptive AI Coaching
+The AI coach could personalize guidance based on the user’s behaviour, personality, and financial habits.
+
+Examples:
+
+- supportive coaching mode
+- strict budgeting mode
+- student-focused mode
+- gamified motivation mode
+
+### Smart Behaviour Automation
+
+The system could automatically:
+- move money into emergency savings
+- activate spending cooldown periods
+- delay impulse purchases
+- split salary into savings pockets
+- create adaptive saving goals
+
+### Behaviour-Based Financial Scoring
+Instead of only measuring account balance, the platform could evaluate:
+- saving consistency
+- debt exposure
+- spending discipline
+- emergency readiness
+- long-term financial resilience
+
+## Social Accountability System
+
+Users could join private resilience circles where friends encourage each other to save money and complete financial challenges while keeping exact balances private.
+
+## Long-Term Vision
+
+Our long-term vision is to transform digital banking from a passive financial tracking tool into an intelligent behavioural support system.
+
+We believe future banking should not only tell users what already happened to their money — it should help guide healthier financial decisions before financial stress and debt occur.
+
+GX Resilience represents the first prototype step toward that vision.
