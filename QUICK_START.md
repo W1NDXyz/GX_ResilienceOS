@@ -48,7 +48,8 @@ Closing line:
 - Rewards and streaks make good habits easier to continue.
 - Friends can save together, but the app keeps exact balances private.
 
-
+#
+#
 # Future Vision: Financial HabitOS
 
 GX Resilience is currently designed as a prototype feature inside GXBank focused on helping Malaysian students and fresh graduates build healthier financial habits.
